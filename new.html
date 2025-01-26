@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregnancy & Baby Tracker</title>
+  <link rel="stylesheet" href="new.css">
+  <script type="module" src="firebase.js" defer></script>
+  
+
+</head>
+<body>
+  <!-- Login Page -->
+  <div id="loginPage" class="login-page">
+    <header>
+      <h1 class="main-heading">Pregnancy & Baby Tracker</h1>
+    </header>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" id="submit">Login</button>
+        <p id="loginError" class="error-message" style="display: none;">Invalid credentials, please try again.</p>
+      </form>
+      <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign Up</a></p>
+    </div>
+  </div>
+
+<!-- Sign Up Page --> 
+<div id="signUpPage" class="login-page" style="display: none;"> 
+  <header> 
+    <h1 class="main-heading">WELLBEE</h1> 
+  </header> 
+  <div class="login-container"> 
+    <h2>Sign Up</h2> 
+    <form id="signUpForm" onsubmit="return handleSignUp(event)"> 
+      <input type="text" id="signUpUsername" placeholder="Username" required> 
+      <input type="password" id="signUpPassword" placeholder="Password" required> 
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required> 
+      <button type="submit" id="signUpSubmit">Sign Up</button> 
+      <p id="signUpError" class="error-message" style="display: none;">Passwords do not match. Please try again.</p> 
+      <p id="signUpMessage" style="color: green; display: none;">Sign-up successful!</p> 
+    </form> 
+    <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p> 
+  </div> 
+</div> 
+ 
+ 
+  <!-- Profile Setup Page (Appears after Sign-Up) --> 
+  <div id="profilePage" class="login-page" style="display: none;"> 
+    <header> 
+      <h1 class="main-heading">WELLBEE</h1> 
+    </header> 
+    <div class="login-container"> 
+      <h2>Complete Your Profile</h2> 
+      <form id="profileForm" onsubmit="return handleProfileSubmission(event)"> 
+        <h2>Profile Setup</h2> 
+        <div id="profileError" style="color: red; display: none;"></div> 
+        <div id="profileMessage" style="color: green; display: none;"></div> 
+     
+        <input type="text" id="fullName" placeholder="Full Name" required> 
+        <input type="date" id="dob" placeholder="Date of Birth" required> 
+        <input type="number" id="age" placeholder="Age" required> 
+        <button type="submit">Submit</button> 
+      </form> 
+    </div> 
+  </div>
+
+  <!-- App Page (Hidden initially) -->
+  <div id="appPage" class="app-page" style="display: none;">
+    <!-- Sidebar Menu Section -->
+    <div id="menu" class="sidebar">
+      <header>
+        <h2>Stay on Track</h2>
+      </header>
+      <div class="menu-buttons">
+        <button onclick="showSection('Menu')">Home</button>
+        <button onclick="showSection('weight')">Weight Tracker</button>
+        <button onclick="showSection('medicine')">Medicine Reminder</button>
+        <button onclick="showSection('appointment')">Appointment Reminder</button>
+        <button onclick="showSection('food')">Food Suggestions</button>
+      </div>
+    </div>
+
+    <!-- Sections of the App -->
+    <section id="Menu" class="tracker-section" style="display: none;">
+      <h1 style=" font-size: 40px" id="menuGreeting">Hello, welcome!</h1>
+      <p style="font-size: 20px">Track your health, monitor your progress, and get personalized recommendations for a healthy pregnancy journey.</p>
+    </section>
+    <!--weight traker-->
+    <section id="weight" class="tracker-section" style="display: none;">
+      <div class="tracker-item">
+        <h2>Weight Tracker</h2>
+        <input type="number" id="weightInput" placeholder="Enter weight (kg)">
+        <button onclick="trackWeight()">Track</button>
+        <p id="weightStatus"></p>
+    
+        <h3>Monthly Weight Entries</h3>
+        <table id="weightTable" style="border: 1px solid black; border-collapse: collapse; width: 100%;">
+          <thead>
+            <tr>
+              <th style="border: 1px solid black; padding: 8px;">Date</th>
+              <th style="border: 1px solid black; padding: 8px;">Weight (kg)</th>
+              <th style="border: 1px solid black; padding: 8px;">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+    
+    <script src="script.js"></script>
+    
+
+
+
+    <section id="medicine" class="tracker-section" style="display: none;">
+      <div class="tracker-item">
+        <h2>Medicine Reminder</h2>
+        <input type="text" id="medicineInput" placeholder="Enter medicine name">
+        <input type="time" id="medicineTime" placeholder="Set time">
+        <button onclick="setMedicineReminder()">Set Reminder</button>
+        <p id="medicineReminderStatus"></p>
+    
+        <h3>Existing Reminders</h3>
+        <ul id="medicineReminderList" style="list-style-type: none; padding: 0;"></ul>
+      </div>
+    </section>
+    
+
+    <section id="appointment" class="tracker-section" style="display: none;">
+      <div class="tracker-item">
+        <h2>Appointment Reminder</h2>
+        <input type="date" id="appointmentDate" placeholder="Choose appointment date">
+        <button onclick="setAppointmentReminder()">Set Appointment</button>
+        <p id="appointmentReminderStatus"></p>
+      </div>
+    </section>
+
+    <section id="food" class="tracker-section" style="display: none;">
+      <div class="tracker-item">
+        <h2>Food Suggestions</h2>
+        <button onclick="showFoodSuggestions()">Get Food Suggestions</button>
+        <ul id="foodSuggestions" style="list-style-type: none; padding: 0;"></ul>
+      </div>
+    </section>
+    
+    <!--<footer>
+      <p>© 2025 Pregnancy & Baby Tracker</p>
+    </footer>-->
+  </div>
+
+  <script src="new.js"></script>
+</body>
+</html>

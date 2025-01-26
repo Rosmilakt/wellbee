@@ -1,0 +1,145 @@
+/* Your existing CSS (unchanged) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(252, 219, 224);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+header {
+  background-color: rgb(246, 180, 191);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.login-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-container h2 {
+  color:pink;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(252, 175, 187);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color:rgb(240, 178, 198);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.app-page {
+  display: none;
+  margin-left: 250px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Sidebar Menu Styles */
+.sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgb(236, 169, 180);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.menu-buttons button {
+  width: 100%;
+  padding: 15px;
+  background-color: rgb(247, 181, 192);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; 
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.menu-buttons button:hover {
+  background-color: rgb(232, 145, 160);
+}
+
+/* Other App Section Styles */
+.tracker-section {
+  display: none;
+}
+
+.tracker-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*footer {
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(194, 107, 121);
+  color: white;
+  position: bottom;
+  bottom: 0;
+  width: 100%;
+}*/
+/* CSS for Weight Chart */
+#Menu {
+  background-image: url("IMG-20250126-WA0001.jpg"); /* Replace with the actual image path */
+  background-size: cover; /* Ensure the image covers the entire section */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding: 20px; /* Optional: Adjust padding for better spacing */
+  color: rgb(7, 7, 7); /* Ensure text is readable on the background */
+  height: 100vh; /* Optional: Set height of the section */
+  
+}
