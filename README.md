@@ -13,7 +13,7 @@ Welcome to the **WellBEE**! This application is designed to help expecting mothe
 - **User Information Display:** After logging in, users can view their profile details:
   - Full Name
   - Date of Birth (calculated age)
-  - Current Weight (input during sign-up or updated later).
+  
 
 ### Health Tools
 - **Weight Tracker:** Monitor and track weight progress over time.
